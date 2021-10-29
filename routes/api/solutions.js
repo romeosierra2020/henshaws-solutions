@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 router.get('/one', async (req, res) => {
     var objectId = mongoose.Types.ObjectId(req.query.id);
     try {
-        let solution = await Solution.findOne( _id = objectId );
+        let solution = await Solution.findOne( {_id: objectId} );
         res.json(solution);
     } catch (err) {
         console.log(err)
