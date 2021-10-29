@@ -12,7 +12,7 @@ router.use(express.json());
 router.get('/', async (req, res) => {
 
     try {
-        let solutions = await Solution.find({}).sort({date: -1});
+        let solutions = await Solution.find({}).sort({name: 1});
         res.json(solutions);
     } catch (err) {
         console.log(err)
@@ -21,10 +21,9 @@ router.get('/', async (req, res) => {
 
 router.get('/one', async (req, res) => {
     var objectId = mongoose.Types.ObjectId(req.query.id);
-    console.log(objectId)
     try {
-        let solutions = await Solution.findOne( _id = objectId );
-        res.json(solutions);
+        let solution = await Solution.findOne( _id = objectId );
+        res.json(solution);
     } catch (err) {
         console.log(err)
     }
